@@ -275,7 +275,7 @@ namespace odb
       pbind[0].buffer = const_cast<char*> (name.c_str ());
       pbind[0].buffer_length = psize[0];
       pbind[0].length = &psize[0];
-      pbind[0].is_null = &pnull[0];
+      pbind[0].is_null = reinterpret_cast<bool*>(&pnull[0]);
 
       param.version++;
 
@@ -289,12 +289,12 @@ namespace odb
       rbind[0].buffer_type = MYSQL_TYPE_LONGLONG;
       rbind[0].is_unsigned = 1;
       rbind[0].buffer = &svi.version;
-      rbind[0].is_null = &rnull[0];
+      rbind[0].is_null = reinterpret_cast<bool*>(&rnull[0]);
 
       rbind[1].buffer_type = MYSQL_TYPE_TINY;
       rbind[1].is_unsigned = 0;
       rbind[1].buffer = &migration;
-      rbind[1].is_null = &rnull[1];
+      rbind[1].is_null = reinterpret_cast<bool*>(&rnull[1]);
 
       result.version++;
 

@@ -40,7 +40,7 @@ namespace odb
         b.buffer_type = MYSQL_TYPE_SHORT;
         b.is_unsigned = 1;
         b.buffer = &i;
-        b.is_null = is_null;
+        b.is_null = reinterpret_cast <bool *>(is_null);
       }
 
       static bool
@@ -78,7 +78,7 @@ namespace odb
         b.buffer = i.data ();
         b.buffer_length = static_cast<unsigned long> (i.capacity ());
         b.length = &size;
-        b.is_null = is_null;
+        b.is_null =  reinterpret_cast <bool *>(is_null);
       }
 
       static bool
