@@ -7,7 +7,7 @@
 
 #include <odb/mysql/details/config.hxx>
 
-typedef char my_bool;
+typedef bool my_bool;
 typedef struct st_mysql_bind MYSQL_BIND;
 
 // MariaDB defines time types directly in mysql.h. Note that MariaDB is only
